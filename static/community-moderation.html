@@ -184,15 +184,33 @@
     });
   }
 
+  function scrollToHashWhenReady() {
+    if (!window.location.hash) return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    const styleSheetsReady = Promise.all(
+      Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(link =>
+        link.sheet ? Promise.resolve() : new Promise(res => {
+          link.addEventListener('load', res, { once: true });
+          link.addEventListener('error', res, { once: true });
+        })
+      )
+    );
+    Promise.all([styleSheetsReady, document.fonts ? document.fonts.ready : Promise.resolve()])
+      .then(() => requestAnimationFrame(() => requestAnimationFrame(() => {
+        const target = document.getElementById(id);
+        if (target) {
+          const rect = target.getBoundingClientRect();
+          window.scrollTo({ top: window.scrollY + rect.top - 24, behavior: 'auto' });
+        }
+      })));
+  }
+
   fetch('/community-moderation.md')
     .then(r => r.ok ? r.text() : Promise.reject('HTTP ' + r.status))
     .then(md => {
       document.getElementById('content').innerHTML = marked.parse(md);
       assignHeadingIds();
-      if (window.location.hash) {
-        const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
-        if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
-      }
+      scrollToHashWhenReady();
     })
     .catch(err => {
       document.getElementById('content').innerHTML =
