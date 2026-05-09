@@ -1,0 +1,29 @@
+runtime: python311
+
+handlers:
+- url: /
+  static_files: static/index.html
+  upload: static/index\.html
+  secure: always
+
+- url: /community-moderation/?
+  static_files: static/community-moderation.html
+  upload: static/community-moderation\.html
+  secure: always
+
+- url: /community-design\.md
+  static_files: community-design.md
+  upload: community-design\.md
+  mime_type: text/markdown
+  secure: always
+
+- url: /community-moderation\.md
+  static_files: community-moderation.md
+  upload: community-moderation\.md
+  mime_type: text/markdown
+  secure: always
+
+- url: /(.+)
+  static_files: static/\1
+  upload: static/(.+)
+  secure: always
