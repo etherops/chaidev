@@ -17,6 +17,12 @@ handlers:
   mime_type: text/markdown
   secure: always
 
+- url: /home\.md
+  static_files: home.md
+  upload: home\.md
+  mime_type: text/markdown
+  secure: always
+
 - url: /(.+)
   static_files: static/\1
   upload: static/(.+)

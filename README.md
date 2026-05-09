@@ -4,11 +4,10 @@ Public docs and the lightweight site that serves them for the ChAIDev community.
 
 ## What's here
 
-- **`community-moderation.md`** — a general field guide on community moderation for small invite-only groups. Research synthesis. Useful reading for anyone running or thinking of running a similar community.
-- **`static/`** — the Google App Engine site at [chaidev-2026.uc.r.appspot.com](https://chaidev-2026.uc.r.appspot.com).
+- **`home.md`** — the canonical ChAIDev working doc (mission, vibe, ground rules, the meeting, the slack, how new members join). Renders as the homepage of the site.
+- **`community-moderation.md`** — a general field guide on community moderation for small invite-only groups. Research synthesis.
+- **`static/`** — the Google App Engine site at [chaidev-2026.uc.r.appspot.com](https://chaidev-2026.uc.r.appspot.com). Lightweight: each HTML page fetches its corresponding `.md` and renders client-side via [marked.js](https://github.com/markedjs/marked) + [github-markdown-css](https://github.com/sindresorhus/github-markdown-css).
 - **`app.yaml` / `main.py`** — GAE deploy config.
-
-The canonical ChAIDev working doc (mission, vibe, ground rules, meeting, slack, invite process) is being landed via PR — see open pull requests.
 
 ## Proposing changes
 

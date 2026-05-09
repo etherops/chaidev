@@ -5,165 +5,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ChaiDev</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍵</text></svg>" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown-light.min.css" />
 <style>
-  :root {
-    --ink: #1a1a1a;
-    --ink-soft: #555;
-    --ink-faint: #888;
-    --paper: #fbfaf6;
-    --rule: #d9d4c5;
-    --accent: #6b4f2c;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    font-size: 18px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  main {
-    max-width: 620px;
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #fbfaf6; }
+  .markdown-body {
+    box-sizing: border-box;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 96px 28px 40px;
-    flex: 1;
-    width: 100%;
+    padding: 64px 28px 120px;
+    background: transparent;
   }
-  pre.ascii-logo {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: 14px;
-    line-height: 1.2;
-    color: var(--ink-soft);
-    margin: 0 0 32px;
+  .markdown-body :target { scroll-margin-top: 24px; }
+  aside.toc {
+    position: fixed;
+    top: 64px;
+    left: max(28px, calc((100vw - 1180px) / 2));
+    width: 220px;
+    max-height: calc(100vh - 128px);
+    overflow-y: auto;
+    font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   }
-  .eyebrow {
+  aside.toc .toc-label {
     text-transform: uppercase;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.14em;
+    color: #6e7781;
     font-size: 11px;
-    color: var(--ink-faint);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-size: 56px;
-    line-height: 1.05;
-    margin: 0 0 18px;
-    letter-spacing: -0.02em;
+    margin: 0 0 14px;
     font-weight: 600;
   }
-  .lede {
-    font-size: 20px;
-    color: var(--ink-soft);
-    font-style: italic;
-    margin: 0 0 48px;
-    max-width: 540px;
-  }
-  .divider {
-    border: 0;
-    border-top: 1px solid var(--rule);
-    margin: 0 0 32px;
-    max-width: 80px;
-    margin-left: 0;
-  }
-  h2 {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--ink-faint);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-weight: 600;
-    margin: 40px 0 14px;
-  }
-  ul.links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  ul.links li {
-    margin-bottom: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--rule);
-  }
-  ul.links li:last-child { border-bottom: none; }
-  ul.links a {
-    color: var(--ink);
+  aside.toc ul { list-style: none; padding: 0; margin: 0; }
+  aside.toc li { margin-bottom: 6px; }
+  aside.toc a {
+    color: #444;
     text-decoration: none;
-    font-size: 19px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-  }
-  ul.links a:hover .title { color: var(--accent); }
-  ul.links .title {
-    font-weight: 500;
-    transition: color 0.15s;
-  }
-  ul.links .arrow {
-    color: var(--ink-faint);
-    font-size: 16px;
-  }
-  ul.links .desc {
     display: block;
-    font-size: 15px;
-    color: var(--ink-soft);
-    font-style: italic;
-    margin-top: 4px;
+    padding: 2px 0;
   }
-  footer {
-    padding: 32px 28px;
-    text-align: center;
-    color: var(--ink-faint);
-    font-size: 12px;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  footer a {
-    color: var(--ink-faint);
-    text-decoration: none;
-  }
-  footer a:hover { color: var(--accent); }
-  @media (max-width: 600px) {
-    main { padding: 60px 22px 32px; }
-    h1 { font-size: 40px; }
-    .lede { font-size: 18px; }
-  }
+  aside.toc a:hover, aside.toc a.active { color: #0969da; font-weight: 600; }
+  aside.toc .toc-h3 { padding-left: 14px; font-size: 12px; color: #6e7781; }
+  @media (max-width: 1180px) { aside.toc { display: none; } }
 </style>
 </head>
 <body>
-<main>
-  <div class="eyebrow">ChAIDev</div>
-  <pre class="ascii-logo">   ( (
-    ) )
- ._______.
- |       |]    ChAI Dev  &lt;/&gt;
- \       /
-  `-----'</pre>
-  <h1>Software development in the era of AI.</h1>
-  <p class="lede">A small group of practitioners thinking out loud about how the craft is changing &mdash; over chai, on calls, in code.</p>
-  <hr class="divider" />
+<aside class="toc" id="toc" hidden></aside>
+<article class="markdown-body" id="content"><p>Loading…</p></article>
 
-  <h2>Reading</h2>
-  <ul class="links">
-    <li>
-      <a href="/community-moderation">
-        <span>
-          <span class="title">Community Moderation &mdash; A Field Guide</span>
-          <span class="desc">A short, opinionated synthesis on running small invite-only communities.</span>
-        </span>
-        <span class="arrow">&rarr;</span>
-      </a>
-    </li>
-  </ul>
-</main>
-<footer>
-  <a href="https://github.com/etherops/chaidev">github.com/etherops/chaidev</a>
-</footer>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  marked.setOptions({ gfm: true, breaks: false });
+
+  function slugify(t) {
+    return t.toLowerCase().replace(/[^\w\s-]+/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+  }
+
+  function buildTOC() {
+    const all = document.querySelectorAll('#content h1, #content h2, #content h3');
+    if (!all.length) return;
+    const used = new Set();
+    all.forEach(h => {
+      if (!h.id) {
+        let base = slugify(h.textContent) || 'section', id = base, n = 1;
+        while (used.has(id)) id = `${base}-${++n}`;
+        h.id = id;
+      }
+      used.add(h.id);
+    });
+    const tocHeadings = document.querySelectorAll('#content h2, #content h3');
+    if (!tocHeadings.length) return;
+    const toc = document.getElementById('toc');
+    let html = '<div class="toc-label">Contents</div><ul>';
+    tocHeadings.forEach(h => {
+      const cls = h.tagName === 'H3' ? 'toc-h3' : '';
+      html += `<li><a href="#${h.id}" class="${cls}" data-target="${h.id}">${h.textContent.trim()}</a></li>`;
+    });
+    toc.innerHTML = html + '</ul>';
+    toc.hidden = false;
+    const links = document.querySelectorAll('aside.toc a');
+    const linkById = {};
+    links.forEach(a => linkById[a.dataset.target] = a);
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const link = linkById[e.target.id];
+        if (link && e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' }).observe;
+    tocHeadings.forEach(h => {
+      const obs = new IntersectionObserver(entries => entries.forEach(e => {
+        const link = linkById[e.target.id];
+        if (link && e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      }), { rootMargin: '-20% 0px -70% 0px' });
+      obs.observe(h);
+    });
+  }
+
+  fetch('/home.md')
+    .then(r => r.ok ? r.text() : Promise.reject('HTTP ' + r.status))
+    .then(md => {
+      document.getElementById('content').innerHTML = marked.parse(md);
+      buildTOC();
+    })
+    .catch(err => {
+      document.getElementById('content').innerHTML = '<p>Error loading document: ' + err + '</p>';
+    });
+</script>
 </body>
 </html>
