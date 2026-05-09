@@ -7,195 +7,162 @@
 <style>
   :root {
     --ink: #1a1a1a;
-    --ink-soft: #444;
-    --ink-faint: #777;
+    --ink-soft: #555;
+    --ink-faint: #888;
     --paper: #fbfaf6;
     --rule: #d9d4c5;
     --accent: #6b4f2c;
-    --highlight: #fff4d6;
-    --quote-bar: #c9b88a;
-    --table-stripe: #f3efe3;
-    --code-bg: #f3efe3;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
     font-size: 18px;
-    line-height: 1.65;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   main {
-    max-width: 760px;
+    max-width: 620px;
     margin: 0 auto;
-    padding: 64px 28px 120px;
+    padding: 96px 28px 40px;
+    flex: 1;
+    width: 100%;
   }
   pre.ascii-logo {
     font-family: "SF Mono", Menlo, Consolas, monospace;
     font-size: 14px;
     line-height: 1.2;
-    background: transparent;
-    padding: 0;
-    margin: 0 0 32px;
     color: var(--ink-soft);
+    margin: 0 0 32px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    margin-bottom: 18px;
   }
   h1 {
-    font-size: 38px;
-    line-height: 1.15;
-    margin: 0 0 24px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 14px;
-  }
-  h2 {
-    font-size: 24px;
-    margin: 56px 0 16px;
-    font-weight: 600;
-    letter-spacing: -0.005em;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 8px;
-  }
-  h3 {
-    font-size: 18px;
-    margin: 28px 0 8px;
-    font-weight: 600;
-  }
-  p { margin: 0 0 16px; }
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(107, 79, 44, 0.35);
-  }
-  a:hover { border-bottom-color: var(--accent); }
-  strong { font-weight: 600; }
-  em { color: var(--ink-soft); }
-  code {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: 0.9em;
-    background: var(--code-bg);
-    padding: 1px 5px;
-    border-radius: 3px;
-  }
-  pre code {
-    background: transparent;
-    padding: 0;
-  }
-  pre {
-    background: var(--code-bg);
-    padding: 14px 16px;
-    border-radius: 4px;
-    overflow-x: auto;
+    font-size: 56px;
+    line-height: 1.05;
     margin: 0 0 18px;
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: 14px;
-    line-height: 1.5;
+    letter-spacing: -0.02em;
+    font-weight: 600;
   }
-  blockquote {
-    margin: 22px 0;
-    padding: 4px 0 4px 22px;
-    border-left: 3px solid var(--quote-bar);
+  .lede {
+    font-size: 20px;
     color: var(--ink-soft);
     font-style: italic;
+    margin: 0 0 48px;
+    max-width: 540px;
   }
-  blockquote strong { color: var(--ink); font-style: normal; }
-  blockquote em { color: var(--ink-soft); }
-  ul, ol {
-    margin: 0 0 18px;
-    padding-left: 24px;
-  }
-  li { margin-bottom: 6px; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 18px 0 24px;
-    font-size: 16px;
-  }
-  th, td {
-    text-align: left;
-    padding: 10px 12px;
-    vertical-align: top;
-    border-bottom: 1px solid var(--rule);
-  }
-  th {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-faint);
-    font-weight: 600;
-    border-bottom: 1.5px solid var(--ink);
-  }
-  tbody tr:nth-child(even) { background: var(--table-stripe); }
-  hr {
+  .divider {
     border: 0;
     border-top: 1px solid var(--rule);
-    margin: 40px 0;
+    margin: 0 0 32px;
+    max-width: 80px;
+    margin-left: 0;
   }
-  .footer {
-    margin-top: 80px;
-    padding-top: 24px;
-    border-top: 1px solid var(--rule);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 12px;
-    color: var(--ink-faint);
+  h2 {
+    font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-align: center;
-  }
-  .footer a {
+    letter-spacing: 0.18em;
     color: var(--ink-faint);
-    border-bottom: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    margin: 40px 0 14px;
   }
-  .footer a:hover { color: var(--accent); }
-  .loading {
+  ul.links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.links li {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  ul.links li:last-child { border-bottom: none; }
+  ul.links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  ul.links a:hover .title { color: var(--accent); }
+  ul.links .title {
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  ul.links .arrow {
     color: var(--ink-faint);
+    font-size: 16px;
+  }
+  ul.links .desc {
+    display: block;
+    font-size: 15px;
+    color: var(--ink-soft);
     font-style: italic;
+    margin-top: 4px;
   }
+  footer {
+    padding: 32px 28px;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  footer a {
+    color: var(--ink-faint);
+    text-decoration: none;
+  }
+  footer a:hover { color: var(--accent); }
   @media (max-width: 600px) {
-    body { font-size: 17px; }
-    main { padding: 36px 20px 80px; }
-    h1 { font-size: 30px; }
-    h2 { font-size: 21px; }
-    table { font-size: 14.5px; }
-    th, td { padding: 8px 8px; }
-    pre.ascii-logo { font-size: 12px; }
+    main { padding: 60px 22px 32px; }
+    h1 { font-size: 40px; }
+    .lede { font-size: 18px; }
   }
 </style>
 </head>
 <body>
 <main>
-  <div id="content"><p class="loading">Loading…</p></div>
-  <div class="footer">
-    <a href="/community-moderation">Community Moderation Field Guide</a>
-    &nbsp;&middot;&nbsp;
-    <a href="https://github.com/etherops/chaidev">github.com/etherops/chaidev</a>
-  </div>
+  <div class="eyebrow">ChAIDev</div>
+  <pre class="ascii-logo">   ( (
+    ) )
+ ._______.
+ |       |]    ChAI Dev  &lt;/&gt;
+ \       /
+  `-----'</pre>
+  <h1>Software development in the era of AI.</h1>
+  <p class="lede">A small group of practitioners thinking out loud about how the craft is changing &mdash; over chai, on calls, in code.</p>
+  <hr class="divider" />
+
+  <h2>Reading</h2>
+  <ul class="links">
+    <li>
+      <a href="/community-moderation">
+        <span>
+          <span class="title">Community Moderation &mdash; A Field Guide</span>
+          <span class="desc">A short, opinionated synthesis on running small invite-only communities.</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </li>
+  </ul>
 </main>
-
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  marked.setOptions({
-    gfm: true,
-    breaks: false,
-    headerIds: true,
-  });
-
-  fetch('/community-design.md')
-    .then(r => {
-      if (!r.ok) throw new Error('Failed to load doc: ' + r.status);
-      return r.text();
-    })
-    .then(md => {
-      document.getElementById('content').innerHTML = marked.parse(md);
-    })
-    .catch(err => {
-      document.getElementById('content').innerHTML =
-        '<p>Error loading document: ' + err.message + '</p>';
-    });
-</script>
+<footer>
+  <a href="https://github.com/etherops/chaidev">github.com/etherops/chaidev</a>
+</footer>
 </body>
 </html>

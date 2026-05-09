@@ -11,12 +11,6 @@ handlers:
   upload: static/community-moderation\.html
   secure: always
 
-- url: /community-design\.md
-  static_files: community-design.md
-  upload: community-design\.md
-  mime_type: text/markdown
-  secure: always
-
 - url: /community-moderation\.md
   static_files: community-moderation.md
   upload: community-moderation\.md
