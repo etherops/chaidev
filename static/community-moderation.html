@@ -165,23 +165,38 @@
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  marked.setOptions({
-    gfm: true,
-    breaks: false,
-    headerIds: true,
-  });
+  marked.setOptions({ gfm: true, breaks: false });
+
+  function slugify(t) {
+    return t.toLowerCase().replace(/[^\w\s-]+/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+  }
+
+  function assignHeadingIds() {
+    const headings = document.querySelectorAll('#content h1, #content h2, #content h3');
+    const used = new Set();
+    headings.forEach(h => {
+      if (!h.id) {
+        let base = slugify(h.textContent) || 'section', id = base, n = 1;
+        while (used.has(id)) id = `${base}-${++n}`;
+        h.id = id;
+      }
+      used.add(h.id);
+    });
+  }
 
   fetch('/community-moderation.md')
-    .then(r => {
-      if (!r.ok) throw new Error('Failed to load doc: ' + r.status);
-      return r.text();
-    })
+    .then(r => r.ok ? r.text() : Promise.reject('HTTP ' + r.status))
     .then(md => {
       document.getElementById('content').innerHTML = marked.parse(md);
+      assignHeadingIds();
+      if (window.location.hash) {
+        const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+        if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
     })
     .catch(err => {
       document.getElementById('content').innerHTML =
-        '<p>Error loading document: ' + err.message + '</p>';
+        '<p>Error loading document: ' + err + '</p>';
     });
 </script>
 </body>
