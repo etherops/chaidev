@@ -111,7 +111,7 @@ The new member isn't in Slack yet, so the sponsor posts on their behalf. Once th
 >
 > To get a ChAIDev Slack invite, post here. We're a curated room and this post is how we get to know you.
 >
-> Three sections — pick at least one angle from each. Mix and match as more apply; you don't have to hit every option.
+> Three sections — pick **one or two (or so?)** angles from each. **DO NOT ANSWER ALL THE INDIVIDUAL PROMPT OPTIONS THAT IS TOO MUCH MANY TO WRITE AND TO READ!**
 >
 > Feel free to throw this through your favorite LLM personal assistant / second brain if you have one and it knows enough to generate this post — we care about the content, not the labor.
 >
@@ -119,7 +119,7 @@ The new member isn't in Slack yet, so the sponsor posts on their behalf. Once th
 >
 > **Section 1 — Who you are / what you bring**
 >
-> *Pick at least one of the following — mix and match if more apply:*
+> ***Pick one or two** of the following — mix and match if more apply:*
 >
 > - **Your current AI / LLM relationship** — what tools you use, how, what's working, what's frustrating.
 > - **How AI has been influencing your work or life** — has your job changed? Are you building differently? Personal impact?
@@ -134,7 +134,7 @@ The new member isn't in Slack yet, so the sponsor posts on their behalf. Once th
 >
 > **Section 2 — What you're hoping for here**
 >
-> *Pick at least one of the following — mix and match if more apply:*
+> ***Pick one or two** of the following — mix and match if more apply:*
 >
 > - **What you're hoping to get out of this kind of networking community** — be specific.
 > - **Questions you'd love the community to weigh in on** — survey-style or open-ended.
